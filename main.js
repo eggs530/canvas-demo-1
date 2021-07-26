@@ -8,6 +8,7 @@ ctx.lineCap = "round";
 
 let pen = document.getElementById("pen")
 let eraser = document.getElementById("eraser")
+let clear = document.getElementById("clear")
 let eraserEnable = false
 pen.onclick = () => {
     eraserEnable = false
@@ -18,6 +19,9 @@ eraser.onclick = () => {
     eraserEnable = true
     eraser.classList.add('active')
     pen.classList.remove('active')
+}
+clear.onclick = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
 
 let painting = false
