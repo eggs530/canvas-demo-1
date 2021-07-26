@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#canvas{
+    display: block;
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.actions{
+    position: fixed;
+    top:0;
+    left:0;
+    padding: 30px;
+}
+.actions svg{
+    width: 2em;
+    height: 2em;
+    transition: all 0.2s;
+    margin: 0 20px;
+}
+.actions svg.active{
+    fill: red;
+    transform: scale(1.2);
+
+}
