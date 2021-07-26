@@ -2,8 +2,8 @@ let canvas = document.getElementById("canvas")
 canvas.width = document.documentElement.clientWidth
 canvas.height = document.documentElement.clientHeight
 let ctx = canvas.getContext('2d');
-ctx.fillStyle = "blue";
-ctx.lineWidth = 10;
+let lineWidth = 5
+ctx.fillStyle = "black";
 ctx.lineCap = "round";
 
 let pen = document.getElementById("pen")
@@ -27,6 +27,7 @@ function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
+    ctx.lineWidth = lineWidth
     ctx.stroke();
 }
 
@@ -45,7 +46,7 @@ if (isTouchDevice) {
         let x = e.touches[0].clientX
         let y = e.touches[0].clientY
         if (eraserEnable === true) {
-            ctx.clearRect(x-5, y-5, 10, 10);
+            ctx.clearRect(x - 5, y - 5, 10, 10);
         } else {
             drawLine(last[0], last[1], x, y)
             last = [x, y]
@@ -80,31 +81,40 @@ let black = document.getElementById("black")
 let red = document.getElementById("red")
 let green = document.getElementById("green")
 let blue = document.getElementById("blue")
-black.onclick=()=>{
+black.onclick = () => {
     ctx.strokeStyle = "black"
     black.classList.add("active")
     red.classList.remove("active")
     green.classList.remove("active")
     blue.classList.remove("active")
 }
-red.onclick=()=>{
+red.onclick = () => {
     ctx.strokeStyle = "red"
     red.classList.add("active")
     green.classList.remove("active")
     blue.classList.remove("active")
     black.classList.remove("active")
 }
-green.onclick=()=>{
+green.onclick = () => {
     ctx.strokeStyle = "green"
     green.classList.add("active")
     red.classList.remove("active")
     blue.classList.remove("active")
     black.classList.remove("active")
 }
-blue.onclick=()=>{
+blue.onclick = () => {
     ctx.strokeStyle = "blue"
     blue.classList.add("active")
     green.classList.remove("active")
     red.classList.remove("active")
     black.classList.remove("active")
+}
+
+let thin = document.getElementById("thin")
+thin.onclick = () => {
+    lineWidth = 5;
+}
+let thick = document.getElementById("thick")
+thick.onclick = () => {
+    lineWidth = 10;
 }
