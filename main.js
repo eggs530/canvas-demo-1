@@ -3,13 +3,12 @@ canvas.width = document.documentElement.clientWidth
 canvas.height = document.documentElement.clientHeight
 let ctx = canvas.getContext('2d');
 ctx.fillStyle = "blue";
-ctx.strokeStyle = "black";
 ctx.lineWidth = 10;
 ctx.lineCap = "round";
 
 let pen = document.getElementById("pen")
 let eraser = document.getElementById("eraser")
-let eraserEnable = true
+let eraserEnable = false
 pen.onclick = () => {
     eraserEnable = false
     pen.classList.add('active')
@@ -46,7 +45,7 @@ if (isTouchDevice) {
         let x = e.touches[0].clientX
         let y = e.touches[0].clientY
         if (eraserEnable === true) {
-            ctx.clearRect(x, y, 10, 10);
+            ctx.clearRect(x-5, y-5, 10, 10);
         } else {
             drawLine(last[0], last[1], x, y)
             last = [x, y]
@@ -76,4 +75,36 @@ if (isTouchDevice) {
     canvas.onmouseup = () => {
         painting = false
     }
+}
+let black = document.getElementById("black")
+let red = document.getElementById("red")
+let green = document.getElementById("green")
+let blue = document.getElementById("blue")
+black.onclick=()=>{
+    ctx.strokeStyle = "black"
+    black.classList.add("active")
+    red.classList.remove("active")
+    green.classList.remove("active")
+    blue.classList.remove("active")
+}
+red.onclick=()=>{
+    ctx.strokeStyle = "red"
+    red.classList.add("active")
+    green.classList.remove("active")
+    blue.classList.remove("active")
+    black.classList.remove("active")
+}
+green.onclick=()=>{
+    ctx.strokeStyle = "green"
+    green.classList.add("active")
+    red.classList.remove("active")
+    blue.classList.remove("active")
+    black.classList.remove("active")
+}
+blue.onclick=()=>{
+    ctx.strokeStyle = "blue"
+    blue.classList.add("active")
+    green.classList.remove("active")
+    red.classList.remove("active")
+    black.classList.remove("active")
 }
