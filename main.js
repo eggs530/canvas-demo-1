@@ -122,3 +122,13 @@ let thick = document.getElementById("thick")
 thick.onclick = () => {
     lineWidth = 10;
 }
+let save = document.getElementById("save")
+save.onclick = ()=>{
+    let url = canvas.toDataURL("image/png")
+    let a = document.createElement("a")
+    document.body.appendChild(a)
+    a.href = url
+    a.download = "我的画"
+    a.target = "_blank"
+    a.click()
+}
